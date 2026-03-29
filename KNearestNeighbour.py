@@ -32,18 +32,28 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Create KNN model
-knn_model = KNeighborsClassifier(n_neighbors=1)
+number_of_neighbors = [1,2,3,4,5]
+for k in number_of_neighbors:
+    knn_model = KNeighborsClassifier(n_neighbors=k)
 
-# Train model
-knn_model.fit(X_train, y_train)
+    # Train model
+    knn_model.fit(X_train, y_train)
 
-# Predict on test data
-y_pred = knn_model.predict(X_test)
+    # Predict on test data
+    y_pred = knn_model.predict(X_test)
 
-# Evaluate model
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy}")
+    # Evaluate model
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    print(f"k value: {k}\n")
 
-# Confusion Matrix
-print("Confusion Matrix:")
-print(confusion_matrix(y_test, y_pred))
+    # Confusion Matrix
+    print("Confusion Matrix:")
+    print(confusion_matrix(y_test, y_pred))
+
+    print(f"Accuracy: {accuracy} Precision: {precision} Recall: {recall} F1 Score: {f1}\n")
+
+
+
