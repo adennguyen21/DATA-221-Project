@@ -1,6 +1,4 @@
 # Neural Network model for Heart Failure Dataset, By Aden N
-from codecs import namereplace_errors
-
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import Sequential
