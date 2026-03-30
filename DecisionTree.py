@@ -12,7 +12,7 @@ target_heart_Y = heart_dataframe["HeartDisease"]
 
 # Train-Test-Split
 X_train, X_test, y_train, y_test = train_test_split(
-    matrix_heart_X, target_heart_Y, test_size=0.2, random_state=42
+    matrix_heart_X, target_heart_Y, test_size=0.3, random_state=42
 )
 
 # One-hot encode them separately

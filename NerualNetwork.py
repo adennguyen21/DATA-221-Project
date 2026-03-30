@@ -33,7 +33,7 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(matrix_heart_X)
 
 # Train/test split
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, target_heart_y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, target_heart_y, test_size=0.3, random_state=42)
 
 # Build model
 neural_network_model = Sequential()
