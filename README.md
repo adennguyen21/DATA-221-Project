@@ -3,7 +3,7 @@
 ## Authors
 
 Aden Nguyen, Jacob Jeon, Uinsean Pamplona, Patrick Macarilay
-Department of Computer Science, University of Calgary
+- Department of Computer Science, University of Calgary
 
 ## Project Overview
 
