@@ -1,3 +1,4 @@
+import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -7,8 +8,8 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 heart_data = pd.read_csv("heart.csv")
 
 # Separate feature matrix data and label vector
-X = heart_dataframe.drop("HeartDisease", axis=1)
-y = heart_dataframe["HeartDisease"]
+X = heart_data.drop("HeartDisease", axis=1)
+y = heart_data["HeartDisease"]
 
 # Split data into 70% training and 30% testing sets
 X_train, X_test, y_train, y_test = train_test_split(
@@ -26,7 +27,7 @@ X_train = scaler.transform(X_train)
 X_test = scaler.transform(X_test)
 
 # Create logistic regression model and fit to training set
-logistic_model = LogisticRegression()
+logistic_model = LogisticRegression(random_state=42, max_iter=5000)
 logistic_model.fit(X_train, y_train)
 
 # Test model
