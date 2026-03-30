@@ -1,5 +1,4 @@
 # KNN model for Heart Failure Dataset by Jacob J
-
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
@@ -34,7 +33,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Create KNN model
 number_of_neighbors = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 for k in number_of_neighbors:
-    knn_model = KNeighborsClassifier(n_neighbors=k)
+    knn_model = KNeighborsClassifier(n_neighbors=k, metric="euclidean")
 
     # Train model
     knn_model.fit(X_train, y_train)
