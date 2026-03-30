@@ -1,6 +1,7 @@
 # Neural Network model for Heart Failure Dataset, By Aden N
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, InputLayer, Dropout
 from tensorflow.keras.optimizers import Adam
@@ -38,3 +39,22 @@ neural_network_model.add(Dense(1, activation='sigmoid'))
 neural_network_model.compile(loss = "binary_crossentropy", optimizer = Adam(learning_rate = 0.001), metrics = ["accuracy"])
 
 history = neural_network_model.fit(X_train, y_train, epochs = 50, batch_size = 32)
+
+# Evaluate model
+y_predicted = (neural_network_model.predict(X_test) > 0.5).astype(int)
+
+# Accuracy
+accuracy_score = accuracy_score(y_test, y_predicted)
+print("Accuracy Score: ", accuracy_score)
+
+# Precision
+precision_score = precision_score(y_test, y_predicted)
+print("Precision Score: ", precision_score)
+
+# Recall
+recall_score = recall_score(y_test, y_predicted)
+print("Recall Score: ", recall_score)
+
+# F1-score
+f1_score = f1_score(y_test, y_predicted)
+print("F1 Score: ", f1_score)
