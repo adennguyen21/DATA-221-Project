@@ -2,6 +2,12 @@
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, confusion_matrix
+import os
+import random
+import numpy as np
+os.environ["PYTHONHASHSEED"] = "42"
+random.seed(42)
+np.random.seed(42)
 import tensorflow as tf
 tf.random.set_seed(42)
 from tensorflow.keras.models import Sequential
