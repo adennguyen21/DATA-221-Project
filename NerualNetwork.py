@@ -1,7 +1,9 @@
 # Neural Network model for Heart Failure Dataset, By Aden N
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
+from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, confusion_matrix
+import tensorflow as tf
+tf.random.set_seed(42)
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, InputLayer, Dropout
 from tensorflow.keras.optimizers import Adam
@@ -58,3 +60,7 @@ print("Recall Score: ", recall_score)
 # F1-score
 f1_score = f1_score(y_test, y_predicted)
 print("F1 Score: ", f1_score)
+
+# Confusion Matrix
+confusion_matrix = confusion_matrix(y_test, y_predicted)
+print("Confusion Matrix: \n", confusion_matrix)
