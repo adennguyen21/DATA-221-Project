@@ -32,3 +32,17 @@ plt.title("Model Performance Comparison")
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+# ======================================================================
+# Plot KNN performance across different K values
+
+k_values = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+f1_scores = [0.842, 0.781, 0.863, 0.849, 0.885, 0.85, 0.881, 0.881, 0.894, 0.883, 0.891, 0.892, 0.901, 0.897, 0.898, 0.899, 0.904, 0.903, 0.914, 0.9, 0.903, 0.897, 0.901, 0.897, 0.894]
+
+plt.figure(figsize=(10,5))
+plt.plot(k_values, f1_scores, marker='o')
+plt.xlabel("K value")
+plt.ylabel("F1 Score")
+plt.title("KNN Performance Across Different k Values")
+plt.grid(True)
+plt.show()
