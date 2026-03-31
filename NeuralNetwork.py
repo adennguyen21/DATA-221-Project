@@ -44,7 +44,9 @@ neural_network_model.add(Dense(16, activation='relu'))
 neural_network_model.add(Dropout(0.1))
 neural_network_model.add(Dense(1, activation='sigmoid'))
 
-neural_network_model.compile(loss = "binary_crossentropy", optimizer = Adam(learning_rate = 0.001), metrics = ["accuracy"])
+neural_network_model.compile(loss = "binary_crossentropy",
+                             optimizer = Adam(learning_rate = 0.001),
+                             metrics = ["accuracy"])
 
 history = neural_network_model.fit(X_train, y_train, epochs = 50, batch_size = 32)
 
