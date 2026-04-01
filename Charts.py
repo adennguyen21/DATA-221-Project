@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-accuracy_dictionary = {"Logistic Regression": 0.880, "KNN": 0.696, "Decision Tree": 0.841, "Neural Network": 0.728}
-precision_dictionary = {"Logistic Regression": 0.917, "KNN": 0.756, "Decision Tree": 0.857, "Neural Network": 0.728}
-recall_dictionary = {"Logistic Regression": 0.878, "KNN": 0.720, "Decision Tree": 0.878, "Neural Network": 0.866}
-f1_dictionary = {"Logistic Regression": 0.897, "KNN": 0.738, "Decision Tree": 0.867, "Neural Network": 0.791}
+accuracy_dictionary = {"Logistic Regression": 0.880, "KNN": 0.895, "Decision Tree": 0.841, "Neural Network": 0.870}
+precision_dictionary = {"Logistic Regression": 0.917, "KNN": 0.919, "Decision Tree": 0.857, "Neural Network": 0.905}
+recall_dictionary = {"Logistic Regression": 0.878, "KNN": 0.902, "Decision Tree": 0.878, "Neural Network": 0.872}
+f1_dictionary = {"Logistic Regression": 0.897, "KNN": 0.911, "Decision Tree": 0.867, "Neural Network": 0.888}
 
 models = sorted(accuracy_dictionary.keys())
 
@@ -37,7 +37,8 @@ plt.show()
 # Plot KNN performance across different K values
 
 k_values = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-f1_scores = [0.842, 0.781, 0.863, 0.849, 0.885, 0.85, 0.881, 0.881, 0.894, 0.883, 0.891, 0.892, 0.901, 0.897, 0.898, 0.899, 0.904, 0.903, 0.914, 0.9, 0.903, 0.897, 0.901, 0.897, 0.894]
+f1_scores = [0.863, 0.803, 0.881, 0.864, 0.883, 0.86, 0.894, 0.882, 0.907, 0.899, 0.907, 0.897, 0.911, 0.893, 0.901, 0.903, 0.904, 0.896, 0.91, 0.906, 0.905, 0.901, 0.905, 0.9, 0.904]
+
 
 plt.figure(figsize=(10,5))
 plt.plot(k_values, f1_scores, marker='o')
