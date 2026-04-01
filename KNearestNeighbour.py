@@ -18,17 +18,17 @@ heart_df_encoded = pd.get_dummies(heart_dataframe, columns=categorical_columns, 
 matrix_heart_X = heart_df_encoded.drop("HeartDisease", axis=1)
 target_heart_y = heart_df_encoded["HeartDisease"]
 
-# Scale features
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(matrix_heart_X)
-
-# Split into training and testing data
 X_train, X_test, y_train, y_test = train_test_split(
-    X_scaled,
+    matrix_heart_X,
     target_heart_y,
     test_size=0.3,
     random_state=42
 )
+# Scale features
+scaler = StandardScaler()
+scaler.fit_transform(X_train)
+X_train_scaled = scaler.transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
 # Create KNN model
 number_of_neighbors = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
