@@ -18,6 +18,7 @@ heart_df_encoded = pd.get_dummies(heart_dataframe, columns=categorical_columns, 
 matrix_heart_X = heart_df_encoded.drop("HeartDisease", axis=1)
 target_heart_y = heart_df_encoded["HeartDisease"]
 
+#train test split
 X_train, X_test, y_train, y_test = train_test_split(
     matrix_heart_X,
     target_heart_y,
