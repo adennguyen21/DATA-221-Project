@@ -18,18 +18,16 @@ import pandas as pd
 # Convert heart.csv as a dataframe
 heart_dataframe = pd.read_csv("heart.csv")
 
-# Separate categorical columns
-categorical_columns = ["Sex", "ChestPainType", "RestingECG", "ExerciseAngina", "ST_Slope"]
-
-# One-hot encode
-heart_df_encoded = pd.get_dummies(heart_dataframe, columns=categorical_columns, drop_first=False)
-
 # Split dataset
-matrix_heart_X = heart_df_encoded.drop("HeartDisease", axis = 1)
-target_heart_y = heart_df_encoded["HeartDisease"]
+matrix_heart_X = heart_dataframe.drop("HeartDisease", axis = 1)
+target_heart_y = heart_dataframe["HeartDisease"]
 
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(matrix_heart_X, target_heart_y, test_size=0.3, random_state=42)
+
+# One-hot encode them separately
+X_train = pd.get_dummies(X_train)
+X_test = pd.get_dummies(X_test)
 
 # Scale the data
 scaler = StandardScaler()
