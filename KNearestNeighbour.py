@@ -33,13 +33,13 @@ X_test_scaled = scaler.transform(X_test)
 # Create KNN model
 number_of_neighbors = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 for k in number_of_neighbors:
-    knn_model = KNeighborsClassifier(n_neighbors=k, metric="euclidean")
+    knn_model = KNeighborsClassifier(n_neighbors=k, metric="manhattan")
 
     # Train model
-    knn_model.fit(X_train, y_train)
+    knn_model.fit(X_train_scaled, y_train)
 
     # Predict on test data
-    y_pred = knn_model.predict(X_test)
+    y_pred = knn_model.predict(X_test_scaled)
 
     # Evaluate model
     accuracy = accuracy_score(y_test, y_pred)
