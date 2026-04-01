@@ -8,15 +8,9 @@ import pandas as pd
 # Convert heart.csv as a dataframe
 heart_dataframe = pd.read_csv("heart.csv")
 
-# Separate categorical columns
-categorical_columns = ["Sex", "ChestPainType", "RestingECG", "ExerciseAngina", "ST_Slope"]
-
-# One-hot encode
-heart_df_encoded = pd.get_dummies(heart_dataframe, columns=categorical_columns, drop_first=False)
-
 # Split dataset into features and target
-matrix_heart_X = heart_df_encoded.drop("HeartDisease", axis=1)
-target_heart_y = heart_df_encoded["HeartDisease"]
+matrix_heart_X = heart_dataframe.drop("HeartDisease", axis=1)
+target_heart_y = heart_dataframe["HeartDisease"]
 
 #train test split
 X_train, X_test, y_train, y_test = train_test_split(
@@ -25,6 +19,11 @@ X_train, X_test, y_train, y_test = train_test_split(
     test_size=0.3,
     random_state=42
 )
+
+# One-hot encode them separately
+X_train = pd.get_dummies(X_train)
+X_test = pd.get_dummies(X_test)
+
 # Scale features
 scaler = StandardScaler()
 scaler.fit_transform(X_train)
@@ -54,6 +53,5 @@ for k in number_of_neighbors:
     print(confusion_matrix(y_test, y_pred))
 
     print(f"Accuracy: {accuracy} Precision: {precision} Recall: {recall} F1 Score: {f1}\n")
-
 
 
