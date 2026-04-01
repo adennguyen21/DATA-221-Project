@@ -26,17 +26,17 @@ target_heart_y = heart_dataframe["HeartDisease"]
 X_train, X_test, y_train, y_test = train_test_split(matrix_heart_X, target_heart_y, test_size=0.3, random_state=42)
 
 # One-hot encode them separately
-X_train = pd.get_dummies(X_train)
-X_test = pd.get_dummies(X_test)
+X_train_encoded = pd.get_dummies(X_train)
+X_test_encoded = pd.get_dummies(X_test)
 
 # Scale the data
 scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
+X_train_scaled = scaler.fit_transform(X_train_encoded)
+X_test_scaled = scaler.transform(X_test_encoded)
 
 # Build model
 neural_network_model = Sequential()
-neural_network_model.add(InputLayer(input_shape=(X_train.shape[1],)))
+neural_network_model.add(InputLayer(input_shape=(X_train_scaled.shape[1],)))
 neural_network_model.add(Dense(32, activation='relu'))
 neural_network_model.add(Dropout(0.2))
 neural_network_model.add(Dense(16, activation='relu'))
@@ -47,10 +47,10 @@ neural_network_model.compile(loss = "binary_crossentropy",
                              optimizer = Adam(learning_rate = 0.001),
                              metrics = ["accuracy"])
 
-history = neural_network_model.fit(X_train, y_train, epochs = 50, batch_size = 32)
+history = neural_network_model.fit(X_train_scaled, y_train, epochs = 50, batch_size = 32)
 
 # Evaluate model
-y_predicted = (neural_network_model.predict(X_test) > 0.5).astype(int)
+y_predicted = (neural_network_model.predict(X_test_scaled) > 0.5).astype(int)
 
 # Accuracy
 accuracy_score = accuracy_score(y_test, y_predicted)
