@@ -28,12 +28,10 @@ heart_df_encoded = pd.get_dummies(heart_dataframe, columns=categorical_columns, 
 matrix_heart_X = heart_df_encoded.drop("HeartDisease", axis = 1)
 target_heart_y = heart_df_encoded["HeartDisease"]
 
-# Scale features
-
-
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(matrix_heart_X, target_heart_y, test_size=0.3, random_state=42)
 
+# Scale the data
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
