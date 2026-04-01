@@ -36,10 +36,10 @@ for k in number_of_neighbors:
     knn_model = KNeighborsClassifier(n_neighbors=k, metric="manhattan")
 
     # Train model
-    knn_model.fit(X_train, y_train)
+    knn_model.fit(X_train_scaled, y_train)
 
     # Predict on test data
-    y_pred = knn_model.predict(X_test)
+    y_pred = knn_model.predict(X_test_scaled)
 
     # Evaluate model
     accuracy = accuracy_score(y_test, y_pred)
